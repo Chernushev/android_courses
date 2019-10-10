@@ -3,32 +3,41 @@ package ru.mobiledimension.nasaapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.bumptech.glide.Glide
+import com.facebook.stetho.Stetho
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 class MainActivity : AppCompatActivity() {
+    private val nasaApi = NetworkService.service.getNasaApi()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        magicBtn.setOnClickListener {
-            NetworkService
-                .service
-                .getNasaApi()
-                .getAPOD("A1dgZrXUk2uAihpYr9iNlWzPR1q7GiUDSlkXYPU1")
-                .enqueue(
-                    object : Callback<APOD> {
-                        override fun onFailure(call: Call<APOD>, t: Throwable) {
-                            t.printStackTrace()
-                        }
+        Stetho.initializeWithDefaults(this)
+        magicBtn.setOnClickListener { requestAPOD() }
+    }
 
-                        override fun onResponse(call: Call<APOD>, response: Response<APOD>) {
-                            Log.wtf("response", response.body().toString())
+
+    private fun requestAPOD() {
+        nasaApi.getAPOD(date = dateET.text.toString())
+            .enqueue(
+                object : Callback<APOD> {
+                    override fun onFailure(call: Call<APOD>, t: Throwable) {
+                        t.printStackTrace()
+                    }
+
+                    override fun onResponse(call: Call<APOD>, response: Response<APOD>) {
+                        Log.wtf("response", response.body().toString())
+                        response.body()?.url?.let {
+                            Glide.with(imageIV)
+                                .load(it)
+                                .into(imageIV)
                         }
                     }
-                )
-        }
+                }
+            )
     }
 }
