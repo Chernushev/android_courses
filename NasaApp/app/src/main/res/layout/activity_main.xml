@@ -2,48 +2,79 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/main_background"
+    >
 
-    <ImageView
-        android:id="@+id/imageIV"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        />
-
-    <LinearLayout
-        android:id="@+id/editTextLL"
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_centerInParent="true"
-        android:layout_above="@id/magicBtn"
+        android:orientation="vertical"
         >
 
-        <EditText
-            android:id="@+id/yearET"
-            android:layout_width="120dp"
-            android:layout_height="40dp"/>
+        <ImageView
+            android:id="@+id/nasaIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="4dp"
+            android:background="@drawable/nasa_icon"
+            android:contentDescription="@string/nasaLogo"
+            />
 
-        <EditText
-            android:id="@+id/monthET"
-            android:layout_width="120dp"
-            android:layout_height="40dp"/>
+        <Button
+            android:id="@+id/apodBtn"
+            android:layout_width="144dp"
+            android:layout_height="36dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/nasaIV"
+            android:layout_margin="4dp"
+            android:background="@color/buttonColor"
+            android:textColor="@color/buttonTextColor"
+            android:text="@string/apodBtnText"
+            android:textAllCaps="false"
+            />
 
-        <EditText
-            android:id="@+id/dateET"
-            android:layout_width="120dp"
-            android:layout_height="40dp"/>
+        <Button
+            android:id="@+id/galleryBtn"
+            android:layout_width="144dp"
+            android:layout_height="36dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/apodBtn"
+            android:layout_margin="4dp"
+            android:background="@color/buttonColor"
+            android:text="@string/galleryBtnText"
+            android:textColor="@color/buttonTextColor"
+            android:textAllCaps="false"
+            />
 
-    </LinearLayout>
+        <Button
+            android:id="@+id/satPhotoBtn"
+            android:layout_width="144dp"
+            android:layout_height="36dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/galleryBtn"
+            android:layout_margin="4dp"
+            android:background="@color/buttonColor"
+            android:text="@string/satPhotoBtnText"
+            android:textColor="@color/buttonTextColor"
+            android:textAllCaps="false"
+            />
 
-    <Button
-        android:id="@+id/magicBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="@string/magicBtnText"
-        />
+        <Button
+            android:id="@+id/exitBtn"
+            android:layout_width="144dp"
+            android:layout_height="36dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/satPhotoBtn"
+            android:layout_margin="4dp"
+            android:background="@color/buttonColor"
+            android:text="@string/exitBtnText"
+            android:textColor="@color/buttonTextColor"
+            android:textAllCaps="false"
+            />
 
+    </RelativeLayout>
 
 </RelativeLayout>

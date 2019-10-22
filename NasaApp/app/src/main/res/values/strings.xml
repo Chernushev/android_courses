@@ -1,5 +1,22 @@
 <resources>
     <string name="app_name">NasaApp</string>
+    <string name="apodBtnText">Фото дня</string>
+    <string name="galleryBtnText">Галерея</string>
+    <string name="satPhotoBtnText">Фото со спутника</string>
+    <string name="exitBtnText">Выйти</string>
+    <string name="nasaLogo">Nasa logo</string>
+    <string name="apod_yearET_hint">Год</string>
+    <string name="apod_monthET_hint">Месяц</string>
+    <string name="apod_dayET_hint">День</string>
+    <string name="apodLoadBtnText">Загрузить фото</string>
+    <string name="apodSaveBtnText">Сохранить</string>
 
-    <string name="magicBtnText">Make magic</string>
+
+    <string-array name="daySP">
+        <item>1990</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+
+    </string-array>
 </resources>

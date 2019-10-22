@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#C3D2DE"
+    >
+
+    <ImageView
+        android:id="@+id/apodIV"
+        android:layout_width="360dp"
+        android:layout_height="280dp"
+        android:layout_centerVertical="true"
+        android:layout_margin="16dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/test_image"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/apodIV"
+        android:orientation="vertical"
+        >
+
+        <EditText
+            android:id="@+id/yearET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:hint="@string/apod_yearET_hint"
+            />
+
+        <EditText
+            android:id="@+id/monthET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:hint="@string/apod_monthET_hint"
+            />
+
+        <EditText
+            android:id="@+id/dayET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="20dp"
+            android:hint="@string/apod_dayET_hint"
+            />
+
+        <Button
+            android:id="@+id/apodLoadBN"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="80dp"
+            android:background="@color/buttonColor"
+            android:text="@string/apodLoadBtnText"
+            android:textColor="@color/buttonTextColor"
+            android:textAllCaps="false"
+            />
+
+        <Button
+            android:id="@+id/apodSaveBN"
+            android:layout_width="130dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:background="@color/buttonColor"
+            android:text="@string/apodSaveBtnText"
+            android:textColor="@color/buttonTextColor"
+            android:textAllCaps="false"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>
