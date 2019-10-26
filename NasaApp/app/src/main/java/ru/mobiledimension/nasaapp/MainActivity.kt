@@ -15,6 +15,11 @@ class MainActivity: AppCompatActivity() {
             startActivity(intent)
         }
 
+        galleryBtn.setOnClickListener {
+            val intent = Intent(this, GalleryActivity::class.java)
+            startActivity(intent)
+        }
+
         exitBtn.setOnClickListener { finish() }
     }
 }

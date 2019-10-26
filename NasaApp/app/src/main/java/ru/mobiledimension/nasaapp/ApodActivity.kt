@@ -16,6 +16,10 @@ class ApodActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_apod)
+        toolbar.setNavigationIcon(R.drawable.icn_back)
+        toolbar.setNavigationOnClickListener { finish() }
+        titleTV.text = getString(R.string.activity_apod_title)
+
         apodLoadBN.setOnClickListener { requestAPOD() }
     }
 

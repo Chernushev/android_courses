@@ -22,9 +22,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ApodActivity">
-
-        </activity>
+        <activity android:name=".ApodActivity"/>
+        <activity android:name=".GalleryActivity"/>
     </application>
 
 </manifest>
