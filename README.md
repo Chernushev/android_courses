@@ -4,6 +4,8 @@
 
 При написании текстов в Wiki были использованны материалы с сайтов: 
 
+https://developer.android.com/
+
 https://devcolibri.com/
 
 https://habr.com/
