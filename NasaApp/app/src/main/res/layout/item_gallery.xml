@@ -1,11 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="40dp"
-    android:layout_margin="20dp"
-    android:background="@color/buttonColor"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:layout_gravity="center_horizontal"
+    android:background="@color/colorPrimary"
+    app:cardCornerRadius="16dp">
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/apodIV"
+        android:layout_width="360dp"
+        android:layout_height="280dp"
+        android:scaleType="centerCrop"
+        android:background="@color/colorAccent"
+        />
+
+    <TextView
+        android:id="@+id/apodTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:layout_gravity="bottom|end"
+        android:background="@drawable/shape_date_background"
+        android:textColor="@android:color/white"
+        android:visibility="gone"
+        tool:text="12:12:12"
+        tool:visibility="visible"
+        />
+
+</androidx.cardview.widget.CardView>

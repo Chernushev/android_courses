@@ -10,12 +10,12 @@ class MainActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        apodBtn.setOnClickListener {
+        apodBN.setOnClickListener {
             val intent = Intent(this, ApodActivity::class.java)
             startActivity(intent)
         }
 
-        galleryBtn.setOnClickListener {
+        galleryBN.setOnClickListener {
             val intent = Intent(this, GalleryActivity::class.java)
             startActivity(intent)
         }

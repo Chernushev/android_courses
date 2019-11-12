@@ -24,7 +24,7 @@
             />
 
         <Button
-            android:id="@+id/apodBtn"
+            android:id="@+id/apodBN"
             android:layout_width="144dp"
             android:layout_height="36dp"
             android:layout_centerHorizontal="true"
@@ -37,11 +37,11 @@
             />
 
         <Button
-            android:id="@+id/galleryBtn"
+            android:id="@+id/galleryBN"
             android:layout_width="144dp"
             android:layout_height="36dp"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/apodBtn"
+            android:layout_below="@id/apodBN"
             android:layout_margin="4dp"
             android:background="@color/buttonColor"
             android:text="@string/galleryBtnText"
@@ -50,11 +50,11 @@
             />
 
         <Button
-            android:id="@+id/satPhotoBtn"
+            android:id="@+id/satPhotoBN"
             android:layout_width="144dp"
             android:layout_height="36dp"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/galleryBtn"
+            android:layout_below="@id/galleryBN"
             android:layout_margin="4dp"
             android:background="@color/buttonColor"
             android:text="@string/satPhotoBtnText"
@@ -68,7 +68,7 @@
             android:layout_width="144dp"
             android:layout_height="36dp"
             android:layout_centerHorizontal="true"
-            android:layout_below="@id/satPhotoBtn"
+            android:layout_below="@id/satPhotoBN"
             android:layout_margin="4dp"
             android:text="@string/exitBtnText"
             android:textAllCaps="false"

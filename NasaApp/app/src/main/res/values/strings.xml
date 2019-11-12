@@ -11,7 +11,7 @@
     <string name="apodLoadBtnText">Загрузить фото</string>
     <string name="apodSaveBtnText">Сохранить</string>
     <string name="activity_apod_title">Фото дня</string>
-    <string name="activity_gallery_title">Галерея</string>
+    <string name="activity_gallary_title">Галерея</string>
 
 
     <string-array name="daySP">

@@ -35,6 +35,7 @@
         android:layout_width="360dp"
         android:layout_height="280dp"
         android:layout_centerVertical="true"
+        android:layout_below="@+id/appBar"
         android:layout_margin="16dp"
         android:scaleType="fitXY"
         android:src="@drawable/test_image"
