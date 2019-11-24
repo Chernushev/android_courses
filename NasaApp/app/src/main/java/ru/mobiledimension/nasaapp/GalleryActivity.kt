@@ -17,10 +17,14 @@ import java.util.Calendar.YEAR
 class GalleryActivity : AppCompatActivity() {
     private val nasaApi = NetworkService.service.getNasaApi()
     private val listAPODs = mutableListOf<APOD>()
+    private val range = 0..5
+
     private val adapter: GalleryAdapter by lazy {
         GalleryAdapter(Glide.with(this))
     }
-    private val range = 0..5
+    private val dbHelper: DbHelper by lazy {
+        DbHelper.instance(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +39,7 @@ class GalleryActivity : AppCompatActivity() {
         val calendar = Calendar.getInstance()
 
         for (i in range) {
-            calendar.add(DAY_OF_MONTH, -2)
+            calendar.add(DAY_OF_MONTH, -1)
             requestAPOD(calendar.get(YEAR), calendar.get(MONTH), calendar.get(DAY_OF_MONTH))
         }
     }
