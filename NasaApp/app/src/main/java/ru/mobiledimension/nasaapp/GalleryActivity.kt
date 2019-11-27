@@ -22,8 +22,13 @@ class GalleryActivity : AppCompatActivity() {
     private val adapter: GalleryAdapter by lazy {
         GalleryAdapter(Glide.with(this))
     }
+
     private val dbHelper: DbHelper by lazy {
         DbHelper.instance(this)
+    }
+
+    private val dao: ApodDao by lazy {
+        NasaApplication.getDatabase().apodDao()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,6 +66,7 @@ class GalleryActivity : AppCompatActivity() {
                                 adapter.setData(listAPODs.sortedBy { it.date })
                                 adapter.notifyDataSetChanged()
                             }
+                            dao.insert(it)
                         }
                     }
                 }

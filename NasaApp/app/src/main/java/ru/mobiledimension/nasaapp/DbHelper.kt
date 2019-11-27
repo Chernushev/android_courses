@@ -50,7 +50,8 @@ class DbHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null,
         media_type = cursor.getStringFromColumn(ApodTable.mediaType),
         service_version = cursor.getStringFromColumn(ApodTable.serviceVersion),
         title = cursor.getStringFromColumn(ApodTable.copyright),
-        url = cursor.getStringFromColumn(ApodTable.url)
+        url = cursor.getStringFromColumn(ApodTable.url),
+        id = null // field for test migration
     )
 
     companion object {

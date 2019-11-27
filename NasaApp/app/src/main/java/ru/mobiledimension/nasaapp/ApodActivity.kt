@@ -12,6 +12,9 @@ import retrofit2.Response
 class ApodActivity: AppCompatActivity() {
     private val nasaApi = NetworkService.service.getNasaApi()
 
+    private val dao: ApodDao by lazy {
+        NasaApplication.getDatabase().apodDao()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +39,10 @@ class ApodActivity: AppCompatActivity() {
                             Glide.with(apodIV)
                                 .load(it)
                                 .into(apodIV)
+                        }
+
+                        response.body()?.let {
+                            dao.insert(it)
                         }
                     }
                 }
