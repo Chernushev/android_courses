@@ -1,4 +1,4 @@
-package ru.mobiledimension.nasaapp
+package ru.mobiledimension.nasaapp.data.db.sqlite
 
 class ApodTable {
     companion object {

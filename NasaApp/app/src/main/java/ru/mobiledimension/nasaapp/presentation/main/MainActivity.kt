@@ -1,9 +1,12 @@
-package ru.mobiledimension.nasaapp
+package ru.mobiledimension.nasaapp.presentation.main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
+import ru.mobiledimension.nasaapp.R
+import ru.mobiledimension.nasaapp.presentation.apod.ApodActivity
+import ru.mobiledimension.nasaapp.presentation.gallery.GalleryActivity
 
 class MainActivity: AppCompatActivity() {
 

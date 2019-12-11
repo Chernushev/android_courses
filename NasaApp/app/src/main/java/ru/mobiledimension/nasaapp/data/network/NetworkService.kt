@@ -1,4 +1,4 @@
-package ru.mobiledimension.nasaapp
+package ru.mobiledimension.nasaapp.data.network
 
 import com.facebook.stetho.okhttp3.StethoInterceptor
 import okhttp3.OkHttpClient

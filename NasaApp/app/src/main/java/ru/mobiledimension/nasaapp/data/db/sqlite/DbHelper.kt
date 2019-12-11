@@ -1,10 +1,11 @@
-package ru.mobiledimension.nasaapp
+package ru.mobiledimension.nasaapp.data.db.sqlite
 
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import androidx.core.content.contentValuesOf
+import ru.mobiledimension.nasaapp.domain.dto.APOD
 import java.util.*
 
 class DbHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -42,17 +43,18 @@ class DbHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null,
         return result
     }
 
-    private fun getAPODFromCursor(cursor: Cursor): APOD = APOD(
-        copyright = cursor.getStringFromColumn(ApodTable.copyright),
-        date = cursor.getStringFromColumn(ApodTable.date),
-        explanation = cursor.getStringFromColumn(ApodTable.explanation),
-        hdurl = cursor.getStringFromColumn(ApodTable.hdUrl),
-        media_type = cursor.getStringFromColumn(ApodTable.mediaType),
-        service_version = cursor.getStringFromColumn(ApodTable.serviceVersion),
-        title = cursor.getStringFromColumn(ApodTable.copyright),
-        url = cursor.getStringFromColumn(ApodTable.url),
-        id = null // field for test migration
-    )
+    private fun getAPODFromCursor(cursor: Cursor): APOD =
+        APOD(
+            copyright = cursor.getStringFromColumn(ApodTable.copyright),
+            date = cursor.getStringFromColumn(ApodTable.date),
+            explanation = cursor.getStringFromColumn(ApodTable.explanation),
+            hdurl = cursor.getStringFromColumn(ApodTable.hdUrl),
+            media_type = cursor.getStringFromColumn(ApodTable.mediaType),
+            service_version = cursor.getStringFromColumn(ApodTable.serviceVersion),
+            title = cursor.getStringFromColumn(ApodTable.copyright),
+            url = cursor.getStringFromColumn(ApodTable.url),
+            id = null // field for test migration
+        )
 
     companion object {
         const val DATABASE_NAME = "NasaDB"

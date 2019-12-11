@@ -1,4 +1,4 @@
-package ru.mobiledimension.nasaapp
+package ru.mobiledimension.nasaapp.presentation.gallery
 
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +9,12 @@ import kotlinx.android.synthetic.main.activity_gallery.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import ru.mobiledimension.nasaapp.*
+import ru.mobiledimension.nasaapp.data.db.room.ApodDao
+import ru.mobiledimension.nasaapp.data.db.sqlite.DbHelper
+import ru.mobiledimension.nasaapp.data.network.NetworkService
+import ru.mobiledimension.nasaapp.domain.dto.APOD
+import ru.mobiledimension.nasaapp.presentation.NasaApplication
 import java.util.*
 import java.util.Calendar.DAY_OF_MONTH
 import java.util.Calendar.MONTH

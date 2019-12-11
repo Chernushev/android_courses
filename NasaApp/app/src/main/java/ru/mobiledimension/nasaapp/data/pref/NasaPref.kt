@@ -1,8 +1,9 @@
-package ru.mobiledimension.nasaapp
+package ru.mobiledimension.nasaapp.data.pref
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import com.google.gson.Gson
+import ru.mobiledimension.nasaapp.domain.dto.APOD
 
 class NasaPref(context: Context) {
     private val pref = context.getSharedPreferences(namePref, MODE_PRIVATE)

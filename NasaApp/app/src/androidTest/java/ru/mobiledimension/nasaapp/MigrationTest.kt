@@ -8,6 +8,8 @@ import androidx.test.runner.AndroidJUnit4
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import ru.mobiledimension.nasaapp.data.db.room.MIGRATION_1_2
+import ru.mobiledimension.nasaapp.data.db.room.NasaDatabase
 
 
 @RunWith(AndroidJUnit4::class)

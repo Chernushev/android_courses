@@ -1,11 +1,11 @@
-package ru.mobiledimension.nasaapp
+package ru.mobiledimension.nasaapp.data.db.room
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
-@Database(entities = [APOD::class], version = 2)
+@Database(entities = [ApodEntity::class], version = 2)
 abstract class NasaDatabase : RoomDatabase() {
     abstract fun apodDao(): ApodDao
 }

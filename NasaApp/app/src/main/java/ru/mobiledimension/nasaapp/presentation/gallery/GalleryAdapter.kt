@@ -1,4 +1,4 @@
-package ru.mobiledimension.nasaapp
+package ru.mobiledimension.nasaapp.presentation.gallery
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
 import kotlinx.android.synthetic.main.item_gallery.view.*
+import ru.mobiledimension.nasaapp.domain.dto.APOD
+import ru.mobiledimension.nasaapp.R
 
 class GalleryAdapter(private val glide: RequestManager): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     var urlList: List<APOD> = listOf()

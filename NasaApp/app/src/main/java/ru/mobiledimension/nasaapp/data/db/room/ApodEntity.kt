@@ -1,12 +1,11 @@
-package ru.mobiledimension.nasaapp
+package ru.mobiledimension.nasaapp.data.db.room
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-
-@Entity
-data class APOD(
+@Entity(tableName = "APOD")
+data class ApodEntity (
     @PrimaryKey
     val date: String,
     val copyright: String,
