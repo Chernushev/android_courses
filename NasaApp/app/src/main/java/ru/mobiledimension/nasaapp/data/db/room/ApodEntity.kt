@@ -8,9 +8,9 @@ import androidx.room.PrimaryKey
 data class ApodEntity (
     @PrimaryKey
     val date: String,
-    val copyright: String,
+    val copyright: String?,
     val explanation: String,
-    val hdurl: String,
+    val hdurl: String?,
     val media_type: String,
     val service_version: String,
     val title: String,

@@ -1,40 +1,19 @@
 package ru.mobiledimension.nasaapp.presentation.gallery
 
 import android.os.Bundle
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_gallery.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import org.kodein.di.generic.instance
 import ru.mobiledimension.nasaapp.*
-import ru.mobiledimension.nasaapp.data.db.room.ApodDao
-import ru.mobiledimension.nasaapp.data.db.sqlite.DbHelper
-import ru.mobiledimension.nasaapp.data.network.NetworkService
 import ru.mobiledimension.nasaapp.domain.dto.APOD
-import ru.mobiledimension.nasaapp.presentation.NasaApplication
-import java.util.*
-import java.util.Calendar.DAY_OF_MONTH
-import java.util.Calendar.MONTH
-import java.util.Calendar.YEAR
+import ru.mobiledimension.nasaapp.presentation.base.BaseActivity
 
-class GalleryActivity : AppCompatActivity() {
-    private val nasaApi = NetworkService.service.getNasaApi()
-    private val listAPODs = mutableListOf<APOD>()
-    private val range = 0..5
+class GalleryActivity: BaseActivity(), GalleryView {
+    private val presenter: GalleryPresenter by kodein.instance(arg = this)
 
     private val adapter: GalleryAdapter by lazy {
         GalleryAdapter(Glide.with(this))
-    }
-
-    private val dbHelper: DbHelper by lazy {
-        DbHelper.instance(this)
-    }
-
-    private val dao: ApodDao by lazy {
-        NasaApplication.getDatabase().apodDao()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,36 +25,11 @@ class GalleryActivity : AppCompatActivity() {
 
         galleryRV.layoutManager = LinearLayoutManager(this)
         galleryRV.adapter = adapter
-
-        val calendar = Calendar.getInstance()
-
-        for (i in range) {
-            calendar.add(DAY_OF_MONTH, -1)
-            requestAPOD(calendar.get(YEAR), calendar.get(MONTH), calendar.get(DAY_OF_MONTH))
-        }
+        presenter.requestApods()
     }
 
-
-    private fun requestAPOD(year: Int, month: Int, day:Int) {
-        nasaApi.getAPOD(date = "${year}-${month}-${day}")
-            .enqueue(
-                object : Callback<APOD> {
-                    override fun onFailure(call: Call<APOD>, t: Throwable) {
-                        t.printStackTrace()
-                    }
-
-                    override fun onResponse(call: Call<APOD>, response: Response<APOD>) {
-                        Log.wtf("response", response.body().toString())
-                        response.body()?.let {
-                            listAPODs.add(it)
-                            if(listAPODs.size == 5) {
-                                adapter.setData(listAPODs.sortedBy { it.date })
-                                adapter.notifyDataSetChanged()
-                            }
-                            dao.insert(it)
-                        }
-                    }
-                }
-            )
+    override fun showApods(apods: List<APOD>) {
+            adapter.setData(apods)
+            adapter.notifyDataSetChanged()
     }
 }

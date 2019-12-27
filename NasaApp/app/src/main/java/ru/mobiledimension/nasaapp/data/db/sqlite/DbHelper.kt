@@ -52,15 +52,12 @@ class DbHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null,
             media_type = cursor.getStringFromColumn(ApodTable.mediaType),
             service_version = cursor.getStringFromColumn(ApodTable.serviceVersion),
             title = cursor.getStringFromColumn(ApodTable.copyright),
-            url = cursor.getStringFromColumn(ApodTable.url),
-            id = null // field for test migration
+            url = cursor.getStringFromColumn(ApodTable.url)
         )
 
     companion object {
         const val DATABASE_NAME = "NasaDB"
         const val DATABASE_VERSION = 1
-        private val dbHelper: DbHelper? = null
-
 
         fun Cursor.getStringFromColumn(columnName: String?): String = this.getString(this.getColumnIndexOrThrow(columnName))
         fun Cursor.getBooleanFromColumn(columnName: String?): Boolean = getIntFromColumn(columnName) > 0
@@ -71,8 +68,5 @@ class DbHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null,
 
         fun Collection<*>.makeSqlPlaceholders(): String
                 = if(this.isEmpty()) "" else Collections.nCopies(this.size, "?").joinToString(separator = ", ")
-
-
-        fun instance(context: Context) = dbHelper ?: DbHelper(context)
     }
 }

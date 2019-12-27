@@ -9,6 +9,5 @@ data class APOD(
     val media_type: String,
     val service_version: String,
     val title: String,
-    val url: String,
-    val id: Int? //new field for migration
+    val url: String
 )

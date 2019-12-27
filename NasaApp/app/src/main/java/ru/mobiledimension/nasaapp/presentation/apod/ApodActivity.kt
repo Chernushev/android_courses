@@ -1,24 +1,19 @@
 package ru.mobiledimension.nasaapp.presentation.apod
 
 import android.os.Bundle
-import android.util.Log
-import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
 import kotlinx.android.synthetic.main.activity_apod.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import org.kodein.di.generic.instance
 import ru.mobiledimension.nasaapp.*
-import ru.mobiledimension.nasaapp.data.db.room.ApodDao
-import ru.mobiledimension.nasaapp.data.network.NetworkService
-import ru.mobiledimension.nasaapp.domain.dto.APOD
-import ru.mobiledimension.nasaapp.presentation.NasaApplication
+import ru.mobiledimension.nasaapp.presentation.base.BaseActivity
+import java.util.*
 
-class ApodActivity: AppCompatActivity(), ApodView {
-    private val nasaApi = NetworkService.service.getNasaApi()
+class ApodActivity: BaseActivity(), ApodView {
+    private val presenter: ApodPresenter by kodein.instance(arg = this)
 
-    private val dao: ApodDao by lazy {
-        NasaApplication.getDatabase().apodDao()
+    private val glide: RequestManager by lazy {
+        Glide.with(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,30 +22,18 @@ class ApodActivity: AppCompatActivity(), ApodView {
         toolbar.setNavigationIcon(R.drawable.ic_back)
         toolbar.setNavigationOnClickListener { finish() }
         titleTV.text = getString(R.string.activity_apod_title)
-        apodLoadBN.setOnClickListener { requestAPOD() }
+        apodLoadBN.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            calendar.set(
+                yearET.text.toString().toInt(),
+                monthET.text.toString().toInt(),
+                dayET.text.toString().toInt()
+            )
+            presenter.requestApod(calendar.time)
+        }
     }
 
-    private fun requestAPOD() {
-        nasaApi.getAPOD(date = "${yearET.text}-${monthET.text}-${dayET.text}")
-            .enqueue(
-                object : Callback<APOD> {
-                    override fun onFailure(call: Call<APOD>, t: Throwable) {
-                        t.printStackTrace()
-                    }
-
-                    override fun onResponse(call: Call<APOD>, response: Response<APOD>) {
-                        Log.wtf("response", response.body().toString())
-                        response.body()?.url?.let {
-                            Glide.with(apodIV)
-                                .load(it)
-                                .into(apodIV)
-                        }
-
-                        response.body()?.let {
-                            dao.insert(it)
-                        }
-                    }
-                }
-            )
+    override fun showPhoto(url: String) {
+        glide.load(url).into(apodIV)
     }
 }

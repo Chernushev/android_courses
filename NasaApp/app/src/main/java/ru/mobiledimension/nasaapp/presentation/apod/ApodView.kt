@@ -1,3 +1,7 @@
 package ru.mobiledimension.nasaapp.presentation.apod
 
-interface ApodView
+import ru.mobiledimension.nasaapp.presentation.base.BaseView
+
+interface ApodView: BaseView {
+    fun showPhoto(url: String)
+}

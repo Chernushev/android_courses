@@ -25,9 +25,5 @@ class NetworkService {
 
     companion object {
         const val baseUrl = "https://api.nasa.gov/"
-
-        val service: NetworkService by lazy {
-            NetworkService()
-        }
     }
 }
